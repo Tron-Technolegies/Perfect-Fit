@@ -1,0 +1,8 @@
+@import "tailwindcss";
+
+body {
+  font-family: "Inter", sans-serif;
+}
+.menu {
+  @apply flex items-center gap-3 px-3 py-2 rounded-lg text-sm text-gray-600 hover:bg-gray-100;
+}
