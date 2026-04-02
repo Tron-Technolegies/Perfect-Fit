@@ -1,16 +1,28 @@
-import React from "react";
-import { FiMapPin, FiCalendar, FiPlus } from "react-icons/fi";
+import React, { useState } from "react";
+import { FiMapPin, FiCalendar, FiChevronDown, FiLogOut } from "react-icons/fi";
+import { useLocation } from "react-router-dom";
 
 const Header = () => {
+  const location = useLocation();
+  const [open, setOpen] = useState(false);
+
+  const getTitle = () => {
+    const path = location.pathname.split("/")[1];
+    if (!path) return "Dashboard";
+    return path.charAt(0).toUpperCase() + path.slice(1);
+  };
+
   return (
-    <div className="flex items-center justify-between px-6 py-4 bg-white border-b border-[#00000014]">
+    <div className="fixed top-0 left-64 right-0 z-30 flex items-center justify-between px-6 py-4 bg-white border-b border-[#00000014]">
       {/* LEFT */}
       <div className="flex gap-4 items-center">
-        <h1 className="text-lg font-semibold text-gray-800 ">Dashboard Overview</h1>
-        <div className="border-[#00000014] border h-[20px]"></div>
-        <div className="flex items-center gap-2 text-sm text-[#7A2A3F] bg-[#FFF5F8] px-4 py-2 rounded-lg border border-[#00000014] mt-1">
+        <h1 className="text-lg font-semibold text-gray-800">{getTitle()}</h1>
+
+        <div className="border border-[#00000014] h-[20px]" />
+
+        <div className="flex items-center gap-2 text-sm text-[#7A2A3F] bg-[#FFF5F8] px-4 py-2 rounded-lg border border-[#00000014]">
           <FiMapPin />
-          Downtown Branch
+          Chavakkad Branch
         </div>
       </div>
 
@@ -21,9 +33,31 @@ const Header = () => {
           Today, Oct 24
         </div>
 
-        <button className="flex items-center gap-2 bg-pink-500 text-white px-4 py-2 rounded-lg shadow hover:bg-pink-600">
-          <FiPlus /> New Order
-        </button>
+        <div className="border border-[#00000014] h-[20px]" />
+
+        {/* PROFILE */}
+        <div className="relative">
+          <div
+            onClick={() => setOpen(!open)}
+            className="flex items-center gap-3 p-2 cursor-pointer rounded-lg hover:bg-gray-50"
+          >
+            <img src="https://i.pravatar.cc/40" alt="" className="w-8 h-8 rounded-full" />
+            <div>
+              <p className="text-sm font-medium">Admin</p>
+              <p className="text-xs text-gray-500">Store Admin</p>
+            </div>
+            <FiChevronDown />
+          </div>
+
+          {/* DROPDOWN */}
+          {open && (
+            <div className="absolute right-0 mt-2 w-40 bg-white border border-[#00000014] rounded-lg shadow-md">
+              <button className="flex items-center gap-2 w-full px-4 py-2 text-sm hover:bg-gray-50">
+                <FiLogOut /> Logout
+              </button>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );
