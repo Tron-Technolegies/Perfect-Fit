@@ -74,7 +74,7 @@ export default function RentalTable() {
           <tbody>
             {data.map((r, i) => (
               <tr key={i} className="border-b border-[#00000014] hover:bg-gray-50">
-                <td className="p-3">{r.id}</td>
+                <td className="p-6">{r.id}</td>
 
                 <td>
                   <p className="font-medium">{r.name}</p>

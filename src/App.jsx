@@ -5,6 +5,7 @@ import ErrorPage from "./pages/ErrorPage";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import InventoryManagement from "./pages/InventoryManagement";
 import RentalManagement from "./pages/RentalManagement";
+import StitchingManagement from "./pages/StitchingManagement";
 
 export default function () {
   const router = createBrowserRouter([
@@ -17,6 +18,7 @@ export default function () {
         { path: "dashboard", element: <Dashboard /> },
         { path: "inventory", element: <InventoryManagement /> },
         { path: "rental", element: <RentalManagement /> },
+        { path: "stitching", element: <StitchingManagement /> },
       ],
     },
   ]);
