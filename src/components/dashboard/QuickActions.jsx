@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FiRotateCcw, FiShoppingBag } from "react-icons/fi";
+import { FiRotateCcw, FiScissors, FiShoppingBag } from "react-icons/fi";
 import NewOrderModal from "./NewOrderModal";
 import ReceiveReturnModal from "./ReceiveReturnModal";
 import ReturnDetailsModal from "./ReturnDetailsModal";
@@ -29,6 +29,13 @@ export default function QuickActions() {
           >
             <FiRotateCcw className="text-pink-500" />
             <p className="text-sm">Receive Return</p>
+          </div>
+          <div
+            onClick={() => setReturnOpen(true)}
+            className="border border-[#00000014] rounded-lg p-4 flex flex-col items-center gap-2 hover:bg-[#FFF5F8] cursor-pointer"
+          >
+            <FiScissors className="text-pink-500" />
+            <p className="text-sm">Custom Order</p>
           </div>
         </div>
       </div>

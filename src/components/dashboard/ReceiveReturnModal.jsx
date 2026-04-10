@@ -26,7 +26,7 @@ export default function ReceiveReturnModal({ onClose, onSelect }) {
   const filtered = orders.filter((o) => o.name.toLowerCase().includes(search.toLowerCase()));
 
   return (
-    <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50">
+    <div className="fixed inset-0 bg-black/40 flex items-center h-screen justify-center z-50">
       <div className="bg-white w-full max-w-xl rounded-xl border border-[#00000014] flex flex-col max-h-[80vh]">
         {/* HEADER */}
         <div className="flex justify-between items-center px-6 py-4 border-b border-[#00000014]">

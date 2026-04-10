@@ -6,6 +6,9 @@ import Dashboard from "./pages/Dashboard/Dashboard";
 import InventoryManagement from "./pages/InventoryManagement";
 import RentalManagement from "./pages/RentalManagement";
 import StitchingManagement from "./pages/StitchingManagement";
+import BillingManagement from "./pages/BillingManagement";
+import FinancialManagement from "./pages/FinancialManagement";
+import Reports from "./pages/Reports";
 
 export default function () {
   const router = createBrowserRouter([
@@ -19,6 +22,9 @@ export default function () {
         { path: "inventory", element: <InventoryManagement /> },
         { path: "rental", element: <RentalManagement /> },
         { path: "stitching", element: <StitchingManagement /> },
+        { path: "billing", element: <BillingManagement /> },
+        { path: "financial", element: <FinancialManagement /> },
+        { path: "reports", element: <Reports /> },
       ],
     },
   ]);

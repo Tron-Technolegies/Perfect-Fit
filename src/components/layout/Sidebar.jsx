@@ -65,7 +65,7 @@ export default function Sidebar() {
               <FiCreditCard /> Billing & Payments
             </NavLink>
 
-            <NavLink to="/sales" className={linkClass}>
+            <NavLink to="/financial" className={linkClass}>
               <FiCreditCard /> Financial Management
             </NavLink>
 
