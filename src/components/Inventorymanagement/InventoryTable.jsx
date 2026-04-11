@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { FiEye, FiEdit, FiTrash2 } from "react-icons/fi";
+import InventoryDetailsModal from "./InventoryDetailsModal";
+import AddEditItemModal from "./AddEditItemModal";
 
 export default function InventoryTable() {
+  const [selectedItem, setSelectedItem] = useState(null);
+  const [editOpen, setEditOpen] = useState(false);
   const data = [
     {
       name: "Royal Blue Sherwani",
@@ -44,8 +48,12 @@ export default function InventoryTable() {
           placeholder="Search by name or SKU..."
           className="border border-[#00000014] px-4 py-2 rounded-lg w-full md:max-w-md outline-none"
         />
-
-        <button className="bg-pink-500 text-white px-4 py-2 rounded-lg">+ Add New Item</button>
+        <button
+          onClick={() => setEditOpen(true)}
+          className="bg-pink-500 text-white px-4 py-2 rounded-lg"
+        >
+          + Add New Item
+        </button>
       </div>
 
       <div className="hidden md:block overflow-x-auto">
@@ -89,8 +97,8 @@ export default function InventoryTable() {
                 </td>
 
                 <td className="flex gap-3 justify-center">
-                  <FiEye className="cursor-pointer" />
-                  <FiEdit className="cursor-pointer" />
+                  <FiEye className="cursor-pointer" onClick={() => setSelectedItem(item)} />{" "}
+                  <FiEdit className="cursor-pointer" onClick={() => setEditOpen(true)} />{" "}
                   <FiTrash2 className="cursor-pointer text-red-500" />
                 </td>
               </tr>
@@ -123,14 +131,26 @@ export default function InventoryTable() {
               </span>
 
               <div className="flex gap-3">
-                <FiEye className="text-gray-300" />
-                <FiEdit className="text-gray-400" />
+                <FiEye className="cursor-pointer" onClick={() => setSelectedItem(item)} />{" "}
+                <FiEdit className="cursor-pointer" onClick={() => setEditOpen(true)} />{" "}
                 <FiTrash2 className="text-red-500" />
               </div>
             </div>
           </div>
         ))}
       </div>
+      {selectedItem && (
+        <InventoryDetailsModal
+          item={selectedItem}
+          onClose={() => setSelectedItem(null)}
+          onEdit={() => {
+            setSelectedItem(null);
+            setEditOpen(true);
+          }}
+        />
+      )}
+
+      {editOpen && <AddEditItemModal onClose={() => setEditOpen(false)} />}
     </div>
   );
 }

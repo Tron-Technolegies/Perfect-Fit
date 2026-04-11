@@ -9,6 +9,8 @@ import StitchingManagement from "./pages/StitchingManagement";
 import BillingManagement from "./pages/BillingManagement";
 import FinancialManagement from "./pages/FinancialManagement";
 import Reports from "./pages/Reports";
+import BranchManagement from "./pages/BranchManagement";
+import Settings from "./pages/Settings";
 
 export default function () {
   const router = createBrowserRouter([
@@ -25,6 +27,8 @@ export default function () {
         { path: "billing", element: <BillingManagement /> },
         { path: "financial", element: <FinancialManagement /> },
         { path: "reports", element: <Reports /> },
+        { path: "branches", element: <BranchManagement /> },
+        { path: "settings", element: <Settings /> },
       ],
     },
   ]);
